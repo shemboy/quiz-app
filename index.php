@@ -64,6 +64,16 @@
   </style>
 </head>
 <body>
+
+    <div id="welcomeScreen">
+    <p>Please enter your name to start the quiz:</p>
+    <input type="text" id="nameInput" placeholder="Enter your Full Name" />
+    <button id="startBtn">▶️ Start Quiz</button>
+  </div>
+
+
+
+  
   <h1>🧠 Quiz</h1>
   <button id="startBtn">▶️ Start Quiz</button>
   <div class="timer" id="timer">Time left: 60s</div>
@@ -254,3 +264,4 @@
   </script>
 </body>
 </html>
+
