@@ -91,17 +91,30 @@
   <script>
     const questions = [
       {
-        type: "multiple",
-        q: "Which service is responsible for applying Group Policy settings on a Windows machine?",
-        choices: ["LSASS", "RPCSS", "GPSVC", "DHCP Client"],
-        answerIndex: 3
-      },
-      {
-        type: "multiple",
-        q: "The Client Service for NetWare is usually:",
-        choices: ["Critical for modern Windows systems", "Used to access Active Directory", "Disabled in modern systems", "DHCP Client"],
-        answerIndex: 3
-      },
+    "question": "Which service is responsible for applying Group Policy settings on a Windows machine?",
+    "options": ["LSASS", "RPCSS", "GPSVC", "DHCP Client"],
+    "answer": "GPSVC"
+  },
+  {
+    "question": "The Client Service for NetWare is usually:",
+    "options": ["Critical for modern Windows systems", "Used to access Active Directory", "Disabled in modern systems", "Required for DHCP"],
+    "answer": "Disabled in modern systems"
+  },
+  {
+    "question": "Which Windows Registry hive stores machine-wide configuration like services and drivers?",
+    "options": ["HKEY_CLASSES_ROOT", "HKEY_CURRENT_USER", "HKEY_LOCAL_MACHINE", "HKEY_USERS"],
+    "answer": "HKEY_LOCAL_MACHINE"
+  },
+  {
+    "question": "In the registry, the value Start = 2 for a service indicates:",
+    "options": ["Disabled", "Automatic", "Manual (Demand)", "Boot driver"],
+    "answer": "Automatic"
+  },
+  {
+    "question": "Which of the following is a security control for service hardening?",
+    "options": ["Use LocalSystem for all services", "Disable auditing for performance", "Export key configs before changes", "Allow writable directories in PATH"],
+    "answer": "Export key configs before changes"
+  }
       {
         type: "truefalse",
         q: "JavaScript is a compiled language.",
@@ -279,4 +292,5 @@
   </script>
 </body>
 </html>
+
 
