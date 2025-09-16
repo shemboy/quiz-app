@@ -19,10 +19,13 @@
       text-align: center;
       color: #2c3e50;
     }
-    #quiz, #timer, #scoreboard {
+    #welcomeScreen, #quiz, #timer, #scoreboard {
       width: 100%;
       max-width: 600px;
       margin-top: 1rem;
+    }
+    #quiz, #timer {
+      display: none;
     }
     button {
       display: block;
@@ -44,6 +47,7 @@
       padding: 0.6rem;
       font-size: 1rem;
       margin: 0.5rem 0;
+      box-sizing: border-box; /* Ensures padding doesn't affect total width */
     }
     .timer, .result, .scoreboard h2 {
       font-weight: bold;
@@ -64,24 +68,21 @@
   </style>
 </head>
 <body>
+  <h1>🧠 Quiz</h1>
 
-    <div id="welcomeScreen">
+  <div id="welcomeScreen">
     <p>Please enter your name to start the quiz:</p>
     <input type="text" id="nameInput" placeholder="Enter your Full Name" />
     <button id="startBtn">▶️ Start Quiz</button>
   </div>
-
-
-
   
-  <h1>🧠 Quiz</h1>
-  <button id="startBtn">▶️ Start Quiz</button>
   <div class="timer" id="timer">Time left: 60s</div>
   <div id="quiz">
     <p id="question"></p>
     <div id="choices"></div>
     <div id="result" class="result"></div>
   </div>
+  
   <div class="scoreboard" id="scoreboard">
     <h2>📋 Scoreboard</h2>
     <ul id="scoreList"></ul>
@@ -95,11 +96,6 @@
         choices: ["map()", "filter()", "reduce()", "sort()"],
         answerIndex: 1
       },
-
-
-
-
-
       {
         type: "truefalse",
         q: "JavaScript is a compiled language.",
@@ -128,6 +124,7 @@
     let score = 0;
     let timeLeft = 60;
     let timerInterval;
+    let studentName = "";
 
     const startBtn = document.getElementById('startBtn');
     const qEl = document.getElementById('question');
@@ -136,6 +133,8 @@
     const tEl = document.getElementById('timer');
     const quizEl = document.getElementById('quiz');
     const scoreList = document.getElementById('scoreList');
+    const nameInput = document.getElementById('nameInput');
+    const welcomeScreen = document.getElementById('welcomeScreen');
 
     function shuffle(array) {
       return array.slice().sort(() => Math.random() - 0.5);
@@ -143,18 +142,24 @@
 
     function loadScoreboard() {
       const scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
-      scoreList.innerHTML = scores.map(s => `<li>${s.date} — ${s.score}/${s.total}</li>`).join('');
+      scoreList.innerHTML = scores.map(s => `<li>${s.name} on ${s.date} — ${s.score}/${s.total}</li>`).join('');
     }
 
     function saveScore(score, total) {
       const scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
       const now = new Date().toLocaleString();
-      scores.unshift({ date: now, score, total });
+      scores.unshift({ date: now, name: studentName, score, total });
       localStorage.setItem('quizScores', JSON.stringify(scores.slice(0, 10)));
     }
 
     startBtn.addEventListener('click', () => {
-      startBtn.style.display = 'none';
+      const name = nameInput.value.trim();
+      if (name === "") {
+        alert("Please enter your name to start.");
+        return;
+      }
+      studentName = name;
+      welcomeScreen.style.display = 'none';
       quizEl.style.display = 'block';
       tEl.style.display = 'block';
       shuffled = shuffle(questions);
@@ -206,7 +211,7 @@
           cEl.appendChild(btn);
         });
       } else if (current.type === "truefalse") {
-        ["True", "False"].forEach((val, idx) => {
+        ["True", "False"].forEach((val) => {
           const btn = document.createElement('button');
           btn.textContent = val;
           btn.onclick = () => {
@@ -264,4 +269,3 @@
   </script>
 </body>
 </html>
-
