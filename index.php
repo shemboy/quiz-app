@@ -106,7 +106,7 @@
         q: "Fill in the blanks: To declare variables, you can use ____ or ____.",
         answer: ["let", "var"]
       },
-{
+      {
         type: "fill",
         q: "Fill in the blanks: first name and last name ____ or ____.",
         answer: ["let", "var"]
@@ -286,3 +286,4 @@
   </script>
 </body>
 </html>
+
