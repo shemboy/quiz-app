@@ -47,7 +47,7 @@
       padding: 0.6rem;
       font-size: 1rem;
       margin: 0.5rem 0;
-      box-sizing: border-box; /* Ensures padding doesn't affect total width */
+      box-sizing: border-box;
     }
     .timer, .result, .scoreboard h2 {
       font-weight: bold;
@@ -72,7 +72,7 @@
 
   <div id="welcomeScreen">
     <p>Please enter your name to start the quiz:</p>
-    <input type="text" id="nameInput" placeholder="Enter your Full Name" />
+    <input type="text" id="nameInput" placeholder="Enter your name" />
     <button id="startBtn">▶️ Start Quiz</button>
   </div>
   
@@ -103,8 +103,13 @@
       },
       {
         type: "fill",
-        q: "Fill in the blank: The keyword to declare a constant is ____.",
-        answer: "const"
+        q: "Fill in the blanks: To declare variables, you can use ____ or ____.",
+        answer: ["let", "var"]
+      },
+{
+        type: "fill",
+        q: "Fill in the blanks: first name and last name ____ or ____.",
+        answer: ["let", "var"]
       },
       {
         type: "multiple",
@@ -184,7 +189,7 @@
           clearInterval(timerInterval);
           rEl.textContent = "⏱️ Time's up!";
           currentIndex++;
-          setTimeout(showQuestion, 1000);
+          setTimeout(showQuestion, 2000); 
         }
       }, 1000);
 
@@ -206,7 +211,7 @@
               rEl.textContent = `❌ Incorrect. Correct: ${current.choices[current.answerIndex]}`;
             }
             currentIndex++;
-            setTimeout(showQuestion, 1000);
+            setTimeout(showQuestion, 2000);
           };
           cEl.appendChild(btn);
         });
@@ -224,30 +229,42 @@
               rEl.textContent = `❌ Incorrect. Correct: ${current.answer ? "True" : "False"}`;
             }
             currentIndex++;
-            setTimeout(showQuestion, 1000);
+            setTimeout(showQuestion, 2000);
           };
           cEl.appendChild(btn);
         });
       } else if (current.type === "fill") {
-        const input = document.createElement('input');
-        input.type = "text";
-        input.placeholder = "Type your answer...";
-        cEl.appendChild(input);
+        const input1 = document.createElement('input');
+        input1.type = "text";
+        input1.placeholder = "First answer...";
+        cEl.appendChild(input1);
+        
+        const input2 = document.createElement('input');
+        input2.type = "text";
+        input2.placeholder = "Second answer...";
+        cEl.appendChild(input2);
 
         const submitBtn = document.createElement('button');
         submitBtn.textContent = "Submit";
         submitBtn.onclick = () => {
           clearInterval(timerInterval);
-          const userAnswer = input.value.trim().toLowerCase();
-          const correctAnswer = current.answer.toLowerCase();
-          if (userAnswer === correctAnswer) {
+          const userAnswer1 = input1.value.trim().toLowerCase();
+          const userAnswer2 = input2.value.trim().toLowerCase();
+          
+          const correctAnswers = current.answer.map(a => a.toLowerCase());
+          
+          const isCorrect = correctAnswers.includes(userAnswer1) && 
+                            correctAnswers.includes(userAnswer2) &&
+                            userAnswer1 !== userAnswer2;
+          
+          if (isCorrect) {
             score++;
             rEl.textContent = "✅ Correct!";
           } else {
-            rEl.textContent = `❌ Incorrect. Correct: ${current.answer}`;
+            rEl.textContent = `❌ Incorrect. Correct answers are: ${current.answer.join(" and ")}`;
           }
           currentIndex++;
-          setTimeout(showQuestion, 1000);
+          setTimeout(showQuestion, 2000);
         };
         cEl.appendChild(submitBtn);
       }
