@@ -47,7 +47,7 @@
       padding: 0.6rem;
       font-size: 1rem;
       margin: 0.5rem 0;
-      box-sizing: border-box; /* Ensures padding doesn't affect total width */
+      box-sizing: border-box;
     }
     .timer, .result, .scoreboard h2 {
       font-weight: bold;
@@ -72,7 +72,7 @@
 
   <div id="welcomeScreen">
     <p>Please enter your name to start the quiz:</p>
-    <input type="text" id="nameInput" placeholder="Enter your Full Name" />
+    <input type="text" id="nameInput" placeholder="Enter your name" />
     <button id="startBtn">▶️ Start Quiz</button>
   </div>
   
@@ -184,7 +184,8 @@
           clearInterval(timerInterval);
           rEl.textContent = "⏱️ Time's up!";
           currentIndex++;
-          setTimeout(showQuestion, 1000);
+          // Added a 2-second pause here
+          setTimeout(showQuestion, 2000); 
         }
       }, 1000);
 
@@ -206,7 +207,8 @@
               rEl.textContent = `❌ Incorrect. Correct: ${current.choices[current.answerIndex]}`;
             }
             currentIndex++;
-            setTimeout(showQuestion, 1000);
+            // Added a 2-second pause here
+            setTimeout(showQuestion, 2000);
           };
           cEl.appendChild(btn);
         });
@@ -224,7 +226,8 @@
               rEl.textContent = `❌ Incorrect. Correct: ${current.answer ? "True" : "False"}`;
             }
             currentIndex++;
-            setTimeout(showQuestion, 1000);
+            // Added a 2-second pause here
+            setTimeout(showQuestion, 2000);
           };
           cEl.appendChild(btn);
         });
@@ -247,7 +250,8 @@
             rEl.textContent = `❌ Incorrect. Correct: ${current.answer}`;
           }
           currentIndex++;
-          setTimeout(showQuestion, 1000);
+          // Added a 2-second pause here
+          setTimeout(showQuestion, 2000);
         };
         cEl.appendChild(submitBtn);
       }
