@@ -92,9 +92,15 @@
     const questions = [
       {
         type: "multiple",
-        q: "Which method filters an array?",
-        choices: ["map()", "filter()", "reduce()", "sort()"],
-        answerIndex: 1
+        q: "Which service is responsible for applying Group Policy settings on a Windows machine?",
+        choices: ["LSASS", "RPCSS", "GPSVC", "DHCP Client"],
+        answerIndex: 3
+      },
+      {
+        type: "multiple",
+        q: "The Client Service for NetWare is usually:",
+        choices: ["Critical for modern Windows systems", "Used to access Active Directory", "Disabled in modern systems", "DHCP Client"],
+        answerIndex: 3
       },
       {
         type: "truefalse",
@@ -273,3 +279,4 @@
   </script>
 </body>
 </html>
+
