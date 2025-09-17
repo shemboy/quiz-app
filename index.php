@@ -88,192 +88,40 @@
     <ul id="scoreList"></ul>
   </div>
 
+
+
+
+//Please edit the const questions array and add your quiz questions here. Test the code thoroughly before sending it to Mr. Dualos.
+
   <script>
+
     const questions = [
-      
-
-
-
-
-
-
-
-    {
-      type: "multiple",
-     q: "1. What was the state of the firewall in Windows XP when it was released in 2001?",
-     choices: [
-        "A. Advanced firewall enabled by default ",
-        "B. No firewall included ",
-        "C. Basic firewall disabled by default",
-        "D. Firewall with real-time protection"
-      ],
-      answerIndex: 2
-    },
-
-    
-    {
-      type: "multiple",
-     q: "2. Why did users of Windows XP (2001) need third-party antivirus software?",
-     choices: [
-        "A. Windows XP lacked built-in antivirus protection",
-        "B. Windows XP was incompatible with antivirus software ",
-        "C. Windows XP had built-in antivirus ",
-        "D. Windows XP blocked third-party antivirus tools"
-      ],
-      answerIndex: 0
-    },
-
-
-    {
-      type: "multiple",
-     q: "3. Which security feature was introduced in Windows XP Service Pack 2 (2004)? ",
-     choices: [
-        "A. Security Center",
-        "B. BitLocker ",
-        "C. User Account Control (UAC) ",
-        "D. Windows Defender"
-      ],
-      answerIndex: 0
-    },
-
-
-
-    {
-      type: "multiple",
-     q: "4. What was the purpose of the Security Center introduced in Windows XP SP2? ",
-     choices: [
-        "A. To install third-party antivirus software ",
-        "B. To manage user accounts ",
-        "C. To monitor and manage system security settings",
-        "D. To disable the firewallP"
-      ],
-      answerIndex: 2
-    },
-
-
-
-    {
-      type: "multiple",
-     q: "5. Which version of Windows introduced User Account Control (UAC)? ",
-     choices: [
-        "A. Windows 7 ",
-        "B. Windows XP ",
-        "C. Windows Vistas",
-        "D. Windows XP SP2"
-      ],
-      answerIndex: 3
-    },
-
-
-    {
-      type: "multiple",
-     q: "6. What does User Account Control (UAC) do? ",
-     choices: [
-        "A. Prompts users before system changes",
-        "B. Disables antivirus software ",
-        "C. Automatically installs updates ",
-        "D. Blocks internet access"
-      ],
-      answerIndex: 0
-    },
-
-
-
-    {
-      type: "multiple",
-     q: "7. Which anti-spyware tool was included by default in Windows Vista? ",
-     choices: [
-        "A. McAfee Security ",
-        "B. Windows Defender",
-        "C. Norton Antivirus ",
-        "D. Malwarebytes"
-      ],
-      answerIndex: 1
-    },
-
-
-    {
-      type: "multiple",
-     q: "8. How did Windows Vista improve security compared to previous versions? ",
-     choices: [
-        "A. By disabling antivirus software  ",
-        "B. By introducing UAC and including Windows Defender",
-        "C. By removing the firewall ",
-        "D. By allowing unrestricted system changes"
-      ],
-      answerIndex: 1
-    
-    },
-
-
-
-
-
-
-
-
-
+      {
+        type: "multiple",
+        q: "1. What was the state of the firewall in Windows XP when it was released in 2001?",
+        choices: [
+          "A. Advanced firewall enabled by default ",
+          "B. No firewall included ",
+          "C. Basic firewall disabled by default",
+          "D. Firewall with real-time protection"
+        ],
+        answerIndex: 2
+      },
 
 
 
 
       {
-        type: "truefalse",
-        q: "9. Windows XP’s firewall was enabled by default in 2001.",
-        answer: false
-      },
-
-      {
-        type: "truefalse",
-        q: "10. Windows Vista introduced User Account Control (UAC).",
-        answer: true
-      },
-
-      {
-        type: "truefalse",
-        q: "11. SmartScreen Filter only works on websites and cannot scan apps.",
-        answer: false
+        type: "fill",
+        q: "Fill in the blank: The keyword to declare a constant is ____.",
+        answer: "const"
       },
 
 
-      {
-        type: "truefalse",
-        q: "12. Windows Hello is faster and safer than traditional password logins.",
-        answer: true
-      },
 
 
-      {
-        type: "truefalse",
-        q: "13. BitLocker is available in all Windows editions including Home.",
-        answer: false
-      },
-
-      {
-        type: "truefalse",
-        q: "14. Ransomware locks files and demands payment for unlocking them.",
-        answer: true
-      },
 
 
-      {
-        type: "truefalse",
-        q: "15. Microsoft Defender Antivirus in Windows 7 already had full antivirus capability.",
-        answer: false
-      },
-
-
-      {
-        type: "truefalse",
-        q: "16. Controlled Folder Access was introduced as an update to Windows 10.",
-        answer: true
-      },
-
-      {
-        type: "truefalse",
-        q: "17.Windows Security includes both account and identity protection",
-        answer: true
-      },
 
 
       {
@@ -281,34 +129,6 @@
         q: "18. TPM 2.0 is a requirement for Windows 11 security features.",
         answer: true
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     ];
 
     let shuffled = [];
@@ -317,6 +137,7 @@
     let timeLeft = 60;
     let timerInterval;
     let studentName = "";
+    let quizStartTime;
 
     const startBtn = document.getElementById('startBtn');
     const qEl = document.getElementById('question');
@@ -327,6 +148,7 @@
     const scoreList = document.getElementById('scoreList');
     const nameInput = document.getElementById('nameInput');
     const welcomeScreen = document.getElementById('welcomeScreen');
+    const scoreboard = document.getElementById('scoreboard');
 
     function shuffle(array) {
       return array.slice().sort(() => Math.random() - 0.5);
@@ -334,13 +156,13 @@
 
     function loadScoreboard() {
       const scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
-      scoreList.innerHTML = scores.map(s => `<li>${s.name} on ${s.date} — ${s.score}/${s.total}</li>`).join('');
+      scoreList.innerHTML = scores.map(s => `<li>${s.name} on ${s.date} — ${s.score}/${s.total} - Time: ${s.time}</li>`).join('');
     }
 
-    function saveScore(score, total) {
+    function saveScore(score, total, time) {
       const scores = JSON.parse(localStorage.getItem('quizScores') || '[]');
       const now = new Date().toLocaleString();
-      scores.unshift({ date: now, name: studentName, score, total });
+      scores.unshift({ date: now, name: studentName, score, total, time });
       localStorage.setItem('quizScores', JSON.stringify(scores.slice(0, 10)));
     }
 
@@ -357,6 +179,7 @@
       shuffled = shuffle(questions);
       currentIndex = 0;
       score = 0;
+      quizStartTime = new Date();
       showQuestion();
     });
 
@@ -376,8 +199,7 @@
           clearInterval(timerInterval);
           rEl.textContent = "⏱️ Time's up!";
           currentIndex++;
-          // Changed back to 1000ms (1 second)
-          setTimeout(showQuestion, 1000); 
+          setTimeout(showQuestion, 1000);
         }
       }, 1000);
 
@@ -399,7 +221,6 @@
               rEl.textContent = `❌ Incorrect. Correct: ${current.choices[current.answerIndex]}`;
             }
             currentIndex++;
-            // Changed back to 1000ms (1 second)
             setTimeout(showQuestion, 1000);
           };
           cEl.appendChild(btn);
@@ -418,7 +239,6 @@
               rEl.textContent = `❌ Incorrect. Correct: ${current.answer ? "True" : "False"}`;
             }
             currentIndex++;
-            // Changed back to 1000ms (1 second)
             setTimeout(showQuestion, 1000);
           };
           cEl.appendChild(btn);
@@ -442,7 +262,6 @@
             rEl.textContent = `❌ Incorrect. Correct: ${current.answer}`;
           }
           currentIndex++;
-          // Changed back to 1000ms (1 second)
           setTimeout(showQuestion, 1000);
         };
         cEl.appendChild(submitBtn);
@@ -451,14 +270,20 @@
 
     function endQuiz() {
       clearInterval(timerInterval);
+      
+      const quizEndTime = new Date();
+      const totalTimeInMs = quizEndTime - quizStartTime;
+      const totalSeconds = Math.floor(totalTimeInMs / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      const formattedTime = `${minutes}m ${seconds}s`;
+
       qEl.textContent = "🎉 Quiz Complete!";
       cEl.innerHTML = "";
-      rEl.textContent = `Your score: ${score} / ${shuffled.length}`;
+      rEl.innerHTML = `Your score: ${score} / ${shuffled.length}<br>Total time: ${formattedTime}`;
       tEl.style.display = 'none';
-      saveScore(score, shuffled.length);
+      saveScore(score, shuffled.length, formattedTime);
       loadScoreboard();
-      startBtn.textContent = "🔁 Restart Quiz";
-      startBtn.style.display = 'block';
     }
 
     loadScoreboard();
