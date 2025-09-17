@@ -100,53 +100,112 @@
 
     {
       type: "multiple",
-     q: "The Client Service for NetWare is usually:",
+     q: "1. What was the state of the firewall in Windows XP when it was released in 2001?",
      choices: [
-        "Critical for modern Windows systems",
-        "Used to access Active Directory",
-        "Disabled in modern systems",
-        "Required for DHCP"
+        "A. Advanced firewall enabled by default ",
+        "B. No firewall included ",
+        "C. Basic firewall disabled by default",
+        "D. Firewall with real-time protection"
+      ],
+      answerIndex: 2
+    },
+
+    
+    {
+      type: "multiple",
+     q: "2. Why did users of Windows XP (2001) need third-party antivirus software?",
+     choices: [
+        "A. Windows XP lacked built-in antivirus protection",
+        "B. Windows XP was incompatible with antivirus software ",
+        "C. Windows XP had built-in antivirus ",
+        "D. Windows XP blocked third-party antivirus tools"
+      ],
+      answerIndex: 0
+    },
+
+
+    {
+      type: "multiple",
+     q: "3. Which security feature was introduced in Windows XP Service Pack 2 (2004)? ",
+     choices: [
+        "A. Security Center",
+        "B. BitLocker ",
+        "C. User Account Control (UAC) ",
+        "D. Windows Defender"
+      ],
+      answerIndex: 0
+    },
+
+
+
+    {
+      type: "multiple",
+     q: "4. What was the purpose of the Security Center introduced in Windows XP SP2? ",
+     choices: [
+        "A. To install third-party antivirus software ",
+        "B. To manage user accounts ",
+        "C. To monitor and manage system security settings",
+        "D. To disable the firewallP"
       ],
       answerIndex: 2
     },
 
 
 
+    {
+      type: "multiple",
+     q: "5. Which version of Windows introduced User Account Control (UAC)? ",
+     choices: [
+        "A. Windows 7 ",
+        "B. Windows XP ",
+        "C. Windows Vistas",
+        "D. Windows XP SP2"
+      ],
+      answerIndex: 3
+    },
+
+
+    {
+      type: "multiple",
+     q: "6. What does User Account Control (UAC) do? ",
+     choices: [
+        "A. Prompts users before system changes",
+        "B. Disables antivirus software ",
+        "C. Automatically installs updates ",
+        "D. Blocks internet access"
+      ],
+      answerIndex: 0
+    },
 
 
 
+    {
+      type: "multiple",
+     q: "7. Which anti-spyware tool was included by default in Windows Vista? ",
+     choices: [
+        "A. McAfee Security ",
+        "B. Windows Defender",
+        "C. Norton Antivirus ",
+        "D. Malwarebytes"
+      ],
+      answerIndex: 1
+    },
 
 
-{
-       type: "multiple",
-       q: "Which service is responsible for applying Group Policy settings on a Windows machine?",
-       choices: ["LSASS", "RPCSS", "GPSVC", "DHCP Client"],
-       answerIndex: 2
-      },
-{
-       type: "multiple",
-       q: "Which service is responsible for applying Group Policy settings on a Windows machine?",
-       choices: ["LSASS", "RPCSS", "GPSVC", "DHCP Client"],
-       answerIndex: 2
-      },
-{
-       type: "multiple",
-       q: "Which service is responsible for applying Group Policy settings on a Windows machine?",
-       choices: ["LSASS", "RPCSS", "GPSVC", "DHCP Client"],
-       answerIndex: 2
-      },
-{
-       type: "multiple",
-       q: "Which service is responsible for applying Group Policy settings on a Windows machine?",
-       choices: ["LSASS", "RPCSS", "GPSVC", "DHCP Client"],
-       answerIndex: 2
-      },
-{
-       type: "multiple",
-       q: "Which service is responsible for applying Group Policy settings on a Windows machine?",
-       choices: ["LSASS", "RPCSS", "GPSVC", "DHCP Client"],
-       answerIndex: 2
-      },
+    {
+      type: "multiple",
+     q: "8. How did Windows Vista improve security compared to previous versions? ",
+     choices: [
+        "A. By disabling antivirus software  ",
+        "B. By introducing UAC and including Windows Defender",
+        "C. By removing the firewall ",
+        "D. By allowing unrestricted system changes"
+      ],
+      answerIndex: 1
+    
+
+
+
 
 
 
@@ -160,25 +219,96 @@
 
       {
         type: "truefalse",
-        q: "JavaScript is a compiled language.",
+        q: "9. Windows XP’s firewall was enabled by default in 2001.",
         answer: false
       },
-      {
-        type: "fill",
-        q: "Fill in the blank: The keyword to declare a constant is ____.",
-        answer: "const"
-      },
-      {
-        type: "multiple",
-        q: "Which symbol is used for single-line comments?",
-        choices: ["//", "/*", "#", "--"],
-        answerIndex: 0
-      },
+
       {
         type: "truefalse",
-        q: "The DOM stands for Document Object Model.",
+        q: "10. Windows Vista introduced User Account Control (UAC).",
+        answer: true
+      },
+
+      {
+        type: "truefalse",
+        q: "11. SmartScreen Filter only works on websites and cannot scan apps.",
+        answer: false
+      },
+
+
+      {
+        type: "truefalse",
+        q: "12. Windows Hello is faster and safer than traditional password logins.",
+        answer: true
+      },
+
+
+      {
+        type: "truefalse",
+        q: "13. BitLocker is available in all Windows editions including Home.",
+        answer: false
+      },
+
+      {
+        type: "truefalse",
+        q: "14. Ransomware locks files and demands payment for unlocking them.",
+        answer: true
+      },
+
+
+      {
+        type: "truefalse",
+        q: "15. Microsoft Defender Antivirus in Windows 7 already had full antivirus capability.",
+        answer: false
+      },
+
+
+      {
+        type: "truefalse",
+        q: "16. Controlled Folder Access was introduced as an update to Windows 10.",
+        answer: true
+      },
+
+      {
+        type: "truefalse",
+        q: "17.Windows Security includes both account and identity protection",
+        answer: true
+      },
+
+
+      {
+        type: "truefalse",
+        q: "18. TPM 2.0 is a requirement for Windows 11 security features.",
         answer: true
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ];
 
     let shuffled = [];
@@ -335,4 +465,3 @@
   </script>
 </body>
 </html>
-
